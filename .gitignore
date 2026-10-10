@@ -2,6 +2,7 @@ node_modules/
 dist/
 coverage/
 *.tsbuildinfo
+package-lock.json
 .env
 .env.local
 .DS_Store
