@@ -1,0 +1,52 @@
+{
+  "name": "@alsania-io/mcp-code-mode",
+  "version": "0.1.1",
+  "description": "Code-mode MCP server: connects to child MCP servers, exposes TypeScript types, and executes LLM-authored code against their tools.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "MAKEFILE_README.md",
+    "Makefile",
+    "example-config.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alsania-io/mcp-code-mode.git"
+  },
+  "bin": {
+    "mcp-code-mode": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "alsania",
+    "mcp",
+    "code-mode",
+    "codeact",
+    "sandbox",
+    "orchestration"
+  ],
+  "author": "Alsania",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

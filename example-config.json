@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "servers": [
+    {
+      "name": "registry",
+      "command": "node",
+      "args": ["/home/sigma/Desktop/echo-lab/echo-sys/services/registry/runtime/mcp-server.mjs"],
+      "env": {
+        "CLI_BUNDLES_DIR": "/home/sigma/Desktop/echo-lab/echo-sys/cli-bundles",
+        "NODE_ENV": "production",
+        "NODE_NO_WARNINGS": "1"
+      }
+    },
+    {
+      "name": "browser-capture",
+      "command": "node",
+      "args": ["/home/sigma/Desktop/echo-lab/alsania-io-packages/browser-capture/dist/index.js"]
+    },
+    {
+      "name": "playwright",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    { "name": "ucai",
+      "type": "streamable-http",
+      "url": "https://modelcontextprotocol.name/mcp/ucai"
+    },
+    { "name": "api-to-mcp",
+      "command": "uvx",
+      "args": ["api-to-mcp"]
+    },
+    {
+      "name": "openrouter-multi",
+      "command": "npx",
+      "args": ["-y", "@stabgan/openrouter-mcp-multimodal@latest"],
+      "env": {
+        "OPENROUTER_API_KEY": "${OPENROUTER_API_KEY}",
+        "OPENROUTER_DEFAULT_MODEL": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "OPENROUTER_INTEGRATION_MODEL": "openrouter/free",
+        "OPENROUTER_MAX_TOKENS": "10000",
+        "OPENROUTER_PROVIDER_QUANTIZATIONS": "fp16,int8",
+        "OPENROUTER_PROVIDER_REQUIRE_PARAMETERS": "true",
+        "OPENROUTER_PROVIDER_DATA_COLLECTION": "deny",
+        "OPENROUTER_PROVIDER_ALLOW_FALLBACKS": "false",
+        "OPENROUTER_ALLOW_UNSAFE_PATHS": "1"
+        }
+    },
+    {
+      "name": "sequentialthinking",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+        ]
+    },
+    {
+      "name": "context7",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "type": "stdio"
+    },
+    {
+      "name": "omni-rise",
+      "command": "node",
+      "args": ["/home/sigma/Desktop/echo-lab/alsania-io-packages/browser-capture/dist/index.js"]
+    }
+  ],
+  "sandbox": {
+    "timeoutMs": 30000,
+    "maxOutputBytes": 200000,
+    "captureConsole": true
+  },
+  "security": {
+    "allowHttp": true,
+    "allowPrivateHosts": false,
+    "allowedHosts": ["localhost", "0.0.0.0", "127.0.0.1", "https://modelcontextprotocol.name/mcp/ucai"],
+    "allowAllHosts": false
+  }
+}

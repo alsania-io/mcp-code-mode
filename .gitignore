@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.env
+.env.local
+.DS_Store
+*.log
+# Local runtime config / backups (may contain API keys)
+config.json
+configbackup.json
+config.json.bak-*
+example-config.local.json
